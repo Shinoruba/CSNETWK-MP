@@ -1,0 +1,64 @@
+# File Exchange System
+
+## Project Overview
+
+This File Exchange System is a client-server application that enables clients to store, share, and fetch files from a single server using either TCP or UDP protocol. The system consists of a server application and a client application.
+
+## Specifications
+
+### Client Application
+
+The client application serves as the user interface for the File Exchange System.
+
+#### Supported Commands
+
+1. `/join <server_ip_add> <port>`: Connect to the server application
+2. `/leave`: Disconnect from the server application
+3. `/register <handle>`: Register a unique handle or alias
+4. `/store <filename>`: Send file to server
+5. `/dir`: Request directory file list from server
+6. `/get <filename>`: Fetch a file from server
+7. `/?`: Request command help to output all input syntax commands for reference
+
+#### Sample Output Messages
+
+- Successful connection: "Connection to the File Exchange Server is successful!"
+- Successful disconnection: "Connection closed. Thank you!"
+- Successful registration: "Welcome User1!"
+- Successful file upload: "User1<2023-11-06 16:48:05>: Uploaded Hello.txt"
+- Directory listing:
+Server Directory
+Hello.txt
+IMG001.bmp
+- Successful file retrieval: "File received from Server: Hello.txt"
+
+#### Error Messages
+
+- Connection failure: "Error: Connection to the Server has failed! Please check IP Address and Port Number."
+- Disconnection failure: "Error: Disconnection failed. Please connect to the server first."
+- Registration failure: "Error: Registration failed. Handle or alias already exists."
+- File not found (client-side): "Error: File not found."
+- File not found (server-side): "Error: File not found in the server."
+- Command syntax error: "Error: Command not found."
+- Invalid parameters: "Error: Command parameters do not match or are not allowed."
+
+### Server Application
+
+The server application functions as the service to which client applications connect, facilitating interaction among clients in the File Exchange Application.
+
+## Implementation Details
+
+- The system is implemented in Python.
+- It supports both TCP and UDP protocols.
+- The server can handle multiple client connections simultaneously.
+- Files are stored in a designated server directory.
+
+## How to Run
+
+1. Start the server application: `python server_app.py`
+2. Run the client application: `python client_app.py`
+3. Use the supported commands in the client application to interact with the server.
+
+## Note
+
+This project was developed as part of the CSNETWK course at De La Salle University for the Term 3 AY2023-2024.
