@@ -9,31 +9,24 @@ BUFFER_SIZE = 1024
 class FileExchangeClient:
     def __init__(self):
         self.tcp_socket = None
-        self.udp_socket = None
         self.handle = None
 
     def connect(self, ip, port):
         try:
             self.tcp_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             self.tcp_socket.connect((ip, port))
-            self.udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
             print("Connection to the File Exchange Server is successful!")
         except:
             print("Error: Connection to the Server has failed! Please check IP Address and Port Number.")
 
     def disconnect(self):
-        if self.tcp_socket or self.udp_socket:
-            if self.tcp_socket:
-                self.tcp_socket.close()
-            if self.udp_socket:
-                self.udp_socket.close()
+        if self.tcp_socket:
+            self.tcp_socket.close()
             self.tcp_socket = None
-            self.udp_socket = None
             self.handle = None
             print("Connection closed. Thank you!")
         else:
             print("Error: Not connected to any server.")
-
 
     def register(self, handle):
         if not self.tcp_socket:
@@ -97,7 +90,6 @@ class FileExchangeClient:
         print("/get <filename> - Fetch a file from server")
         print("/? - Show this help message")
 
-# Ensures that each command is validated before processing, thus preventing the 'ValueError' we would receive in our terminal.
 def main():
     client = FileExchangeClient()
     while True:
@@ -110,10 +102,7 @@ def main():
             else:
                 print("Error: /join command requires server IP and port.")
         elif command == "/leave":
-            if client.tcp_socket or client.udp_socket:
-                client.disconnect()
-            else:
-                print("Error: Not connected to any server.")
+            client.disconnect()
         elif command.startswith("/register"):
             parts = command.split()
             if len(parts) == 2:
