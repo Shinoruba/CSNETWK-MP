@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This File Exchange System is a client-server application that enables clients to store, share, and fetch files from a single server using either TCP or UDP protocol. The system consists of a server application and a client application.
+This File Exchange System is a client-server application that enables clients to store, share, and fetch files from a single server using TCP protocol. The system consists of a server application and a client application.
 
 ## Specifications
 
@@ -49,7 +49,7 @@ The server application functions as the service to which client applications con
 ## Implementation Details
 
 - The system is implemented in Python.
-- It supports both TCP and UDP protocols.
+- It uses TCP protocol for communication between client and server.
 - The server can handle multiple client connections simultaneously.
 - Files are stored in a designated server directory.
 
