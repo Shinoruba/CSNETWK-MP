@@ -1,8 +1,13 @@
 # File Exchange System
+## NOTE: The applications use only built-in Python modules:
+- `socket`: For network communication.
+- `threading`: For handling multiple client connections in the server.
+- `os`: For file and directory operations.
+- `datetime`: For timestamp generation in the client.
 
 ## Project Overview
 
-This File Exchange System is a client-server application that enables clients to store, share, and fetch files from a single server using either TCP or UDP protocol. The system consists of a server application and a client application.
+This File Exchange System is a client-server application that enables clients to store, share, and fetch files from a single server using TCP protocol. The system consists of a server application and a client application.
 
 ## Specifications
 
@@ -27,20 +32,10 @@ The client application serves as the user interface for the File Exchange System
 - Successful registration: "Welcome User1!"
 - Successful file upload: "User1<2023-11-06 16:48:05>: Uploaded Hello.txt"
 - Directory listing:
-Server Directory
-Hello.txt
-IMG001.bmp
+  - Server Directory
+    - Hello.txt
+    - Goodbye.txt
 - Successful file retrieval: "File received from Server: Hello.txt"
-
-#### Error Messages
-
-- Connection failure: "Error: Connection to the Server has failed! Please check IP Address and Port Number."
-- Disconnection failure: "Error: Disconnection failed. Please connect to the server first."
-- Registration failure: "Error: Registration failed. Handle or alias already exists."
-- File not found (client-side): "Error: File not found."
-- File not found (server-side): "Error: File not found in the server."
-- Command syntax error: "Error: Command not found."
-- Invalid parameters: "Error: Command parameters do not match or are not allowed."
 
 ### Server Application
 
@@ -49,7 +44,7 @@ The server application functions as the service to which client applications con
 ## Implementation Details
 
 - The system is implemented in Python.
-- It supports both TCP and UDP protocols.
+- It uses TCP protocol for communication between client and server.
 - The server can handle multiple client connections simultaneously.
 - Files are stored in a designated server directory.
 
