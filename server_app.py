@@ -1,3 +1,9 @@
+#   CSNETWK S15 - Machine Project
+#   
+#   MP Finals Group 13:
+#   CHAN, RIZZA MIKAELLA CHUA
+#   HOMSSI, YAZAN MANAIG
+#   VILLAMOR, GRANT SPENCER LIM
 import socket
 import threading
 import os
@@ -6,13 +12,6 @@ SERVER_IP = '127.0.0.1'
 SERVER_PORT = 12345
 BUFFER_SIZE = 1024
 FILES_DIR = './server_files/'
-
-#   CSNETWK S15 - Machine Project
-#   
-#   MP Finals Group 13:
-#   CHAN, RIZZA MIKAELLA CHUA
-#   HOMSSI, YAZAN MANAIG
-#   VILLAMOR, GRANT SPENCER LIM
 
 if not os.path.exists(FILES_DIR):
     os.makedirs(FILES_DIR)
@@ -50,14 +49,15 @@ class FileExchangeServer:
                         client_socket.send(f"Welcome {handle}!".encode())
                 elif command == "STORE":
                     filename = args[0]
-                    client_socket.send("READY".encode())  # Acknowledge readiness to receive file
+                    client_socket.send("READY".encode())
                     with open(FILES_DIR + filename, 'wb') as f:
                         while True:
                             file_data = client_socket.recv(BUFFER_SIZE)
-                            if file_data.endswith(b"EOF"):  # Check for end of file transfer
-                                f.write(file_data[:-3])  # Write all but the EOF marker
+                            if file_data.endswith(b"EOF"):
+                                f.write(file_data[:-3]) 
                                 break
                             f.write(file_data)
+                    os.remove(filename)  
                     client_socket.send(f"Uploaded {filename}".encode())
                 elif command == "GET":
                     filename = args[0]
@@ -69,6 +69,7 @@ class FileExchangeServer:
                                 if not file_data:
                                     break
                                 client_socket.send(file_data)
+                        os.remove(filepath)
                     else:
                         client_socket.send(f"Error: File not found in the server.".encode())
                 elif command == "DIR":
