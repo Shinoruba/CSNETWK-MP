@@ -6,6 +6,14 @@ SERVER_IP = '127.0.0.1'
 SERVER_PORT = 12345
 BUFFER_SIZE = 1024
 
+
+#   CSNETWK S15 - Machine Project
+#   
+#   MP Finals Group 13:
+#   CHAN, RIZZA MIKAELLA CHUA
+#   HOMSSI, YAZAN MANAIG
+#   VILLAMOR, GRANT SPENCER LIM
+
 class FileExchangeClient:
     def __init__(self):
         self.tcp_socket = None

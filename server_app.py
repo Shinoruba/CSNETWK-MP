@@ -7,6 +7,13 @@ SERVER_PORT = 12345
 BUFFER_SIZE = 1024
 FILES_DIR = './server_files/'
 
+#   CSNETWK S15 - Machine Project
+#   
+#   MP Finals Group 13:
+#   CHAN, RIZZA MIKAELLA CHUA
+#   HOMSSI, YAZAN MANAIG
+#   VILLAMOR, GRANT SPENCER LIM
+
 if not os.path.exists(FILES_DIR):
     os.makedirs(FILES_DIR)
 

@@ -57,3 +57,9 @@ The server application functions as the service to which client applications con
 ## Note
 
 This project was developed as part of the CSNETWK course at De La Salle University for the Term 3 AY2023-2024.
+
+
+### MP Finals Group 13:
+- Chan, Rizza
+- Homssi, Yazan
+- Villamor, Grant
